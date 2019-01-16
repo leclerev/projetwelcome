@@ -158,4 +158,9 @@ class Good
 
         return $this;
     }
+
+    public function toString(): string
+    {
+        return "ID: " . $this->getId() . " Description: " . $this->getDescription() . " Address: " . $this->getAddress()->toString();
+    }
 }

@@ -15,7 +15,7 @@ class GoodController extends AbstractController
     {
 
         $repository=$this->getDoctrine()->getRepository(Good::class);
-        //$good= $repository->find(1);
+        //$good = $repository->find(1);
         $goods = $repository->findAll();
 
 
