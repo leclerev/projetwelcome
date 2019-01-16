@@ -44,7 +44,7 @@ class Good
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $hasGarage;git
+    private $hasGarage;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
