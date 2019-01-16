@@ -29,7 +29,7 @@ class Good
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $descriptionGood;
+    private $description;
 
     /**
      * @ORM\Column(type="integer")
@@ -44,7 +44,7 @@ class Good
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $hasGarage;
+    private $hasGarage;git
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -80,14 +80,14 @@ class Good
         return $this;
     }
 
-    public function getDescriptionGood(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descriptionGood;
+        return $this->description;
     }
 
-    public function setDescriptionGood(?string $descriptionGood): self
+    public function setDescription(?string $description): self
     {
-        $this->descriptionGood = $descriptionGood;
+        $this->description = $description;
 
         return $this;
     }
