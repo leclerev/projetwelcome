@@ -51,6 +51,13 @@ class Good
      */
     private $hasTerrace;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $address;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +143,18 @@ class Good
     public function setHasTerrace(?bool $hasTerrace): self
     {
         $this->hasTerrace = $hasTerrace;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(Address $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
