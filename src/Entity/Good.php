@@ -17,11 +17,6 @@ class Good
     private $id;
 
     /**
-     * @ORM\Column(type="bigint")
-     */
-    private $idGood;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $typeGood;
@@ -59,18 +54,6 @@ class Good
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdGood(): ?int
-    {
-        return $this->idGood;
-    }
-
-    public function setIdGood(int $idGood): self
-    {
-        $this->idGood = $idGood;
-
-        return $this;
     }
 
     public function getTypeGood(): ?int
