@@ -13,7 +13,7 @@ class GoodController extends AbstractController
     public function index()
     {
         return $this->render('good/index.html.twig', [
-            'controller_name' => 'There',
+            'controller_name' => 'GoodController',
         ]);
     }
 }
