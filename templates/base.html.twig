@@ -6,7 +6,15 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <div>
+        {% block leftpanel %}{% endblock %}
+    </div>
+    <div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+    </div>
+
+    {% block javascripts %}{% endblock %}
     </body>
+
 </html>
