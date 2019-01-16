@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,7 @@ class User
      * @ORM\JoinColumn(nullable=false)
      */
     private $address;
+
 
     public function getId(): ?int
     {
@@ -157,4 +160,5 @@ class User
 
         return $this;
     }
+
 }
