@@ -10,3 +10,7 @@ Finally, start the server by command "bit/console s:r"
 
 ## Creators
 Created by LECLERE Valentin and MEITES Muriel
+
+## Google Docs
+Google doc:
+https://docs.google.com/document/d/1yEinpFsckAK9D6oRDSy6qSQBFO6pwPPQqQKYdsbdx98
