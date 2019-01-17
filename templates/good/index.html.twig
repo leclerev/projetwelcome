@@ -28,13 +28,24 @@
     <div class="example-wrapper">
 
 
-        {% for good in goods %}
+        <table>
             <tr>
-            <td> {{ good.getDescription() }}</td>
-            <td><img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150"><br/></td>
-            </tr>
+                {% for key, good in goods %}
+                    {{ (key%3)?'':'</tr><tr>' }}
+                    <td>
+                        <img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150">
+                        <div>
+                            {{ good.getTypePropertie() }}
 
-        {% endfor %}
+                            {{ good.getAddress().getCity() }}
+
+                            {{ good.getDescription() }}
+                        </div>
+                    </td>
+
+                {% endfor %}
+            </tr>
+        </table>
         This friendly message is coming from: To Be Continued...
         <ul>
             <li>Your controller at <code><a
