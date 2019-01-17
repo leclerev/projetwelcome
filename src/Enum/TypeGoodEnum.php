@@ -6,9 +6,7 @@
  * Time: 13:40
  */
 
-namespace App\Enum;
-
-TypeGoodEnum::$typeName[$variable];
+namespace App\Enum;233, 122
 
 abstract class TypeGoodEnum
 {
