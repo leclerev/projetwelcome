@@ -8,6 +8,7 @@
 
 namespace App\Enum;
 
+TypeGoodEnum::$typeName[$variable];
 
 abstract class TypeGoodEnum
 {
@@ -17,7 +18,7 @@ abstract class TypeGoodEnum
     const PRIVATE_ROOM = 1;
     const SHARED_ROOM = 2;
 
-    protected static $typeName = [
+    public static $typeName = [
         self::FULL_HOUSING => "Full housing",
         self::PRIVATE_ROOM => "Private room",
         self::SHARED_ROOM => "Shared room",
