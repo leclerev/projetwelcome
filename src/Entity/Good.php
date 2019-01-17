@@ -53,7 +53,7 @@ class Good
     private $hasTerrace;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist", "remove"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Address", cascade={"persist", "remove"}, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $address;
@@ -76,17 +76,13 @@ class Good
         return $this;
     }
 
-    public function getTypePropertie(): ?TypePropertyEnum
+    public function getTypePropertie(): ?int
     {
         return $this->typePropertie;
     }
 
-    public function setTypePropertie(?TypePropertyEnum $typePropertie): self
+    public function setTypePropertie(?int $typePropertie): self
     {
-        if (!in_array($typePropertie, TypePropertyEnum::getAvailableTypes())) {
-            throw new \InvalidArgumentException("Invalid type");
-        }
-
         $this->typePropertie = $typePropertie;
 
         return $this;

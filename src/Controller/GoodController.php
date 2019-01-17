@@ -16,7 +16,7 @@ class GoodController extends AbstractController
     public function index()
     {
 
-        $repository=$this->getDoctrine()->getRepository(Good::class);
+        $repository = $this->getDoctrine()->getRepository(Good::class);
         //$good = $repository->find(1);
         $goods = $repository->findAll();
 
@@ -43,11 +43,11 @@ class GoodController extends AbstractController
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($task);
-            // $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('good');
         }
 
         return $this->render('good/form.html.twig', [

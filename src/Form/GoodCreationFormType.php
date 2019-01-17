@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Good;
+use App\Enum\TypeGoodEnum;
 use App\Enum\TypePropertyEnum;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -14,10 +15,15 @@ class GoodCreationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeGood')
+            ->add('typeGood', ChoiceType::class, array(
+                'choices' => TypeGoodEnum::getAvailableTypes(),
+                'choice_label' => function ($choice) {
+                    return TypeGoodEnum::getTypeName($choice);
+                },
+            ))
             ->add('typePropertie', ChoiceType::class, array(
                 'choices' => TypePropertyEnum::getAvailableTypes(),
-                'choice_label' => function($choice) {
+                'choice_label' => function ($choice) {
                     return TypePropertyEnum::getTypeName($choice);
                 },
             ))
@@ -26,8 +32,7 @@ class GoodCreationFormType extends AbstractType
             ->add('hasGarden')
             ->add('hasGarage')
             ->add('hasTerrace')
-            ->add('address')
-        ;
+            ->add('address');
     }
 
     public function configureOptions(OptionsResolver $resolver)
