@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
-{% block leftpanel %}
+{% block title %}
+    {#Hello {{ controller_name }}#}
+    <div class="titre">
+        <h1>Welcome</h1>
+        <h2>Comme à la maison, mais ailleurs !</h2>
+    </div>
 {% endblock %}
+
+
 
 {% block body %}
     <style>
@@ -24,7 +29,11 @@
 
 
         {% for good in goods %}
-            {{ good.toString() }}<br/>
+            <tr>
+            <td> {{ good.getDescription() }}</td>
+            <td><img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150"><br/></td>
+            </tr>
+
         {% endfor %}
         This friendly message is coming from: To Be Continued...
         <ul>

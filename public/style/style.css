@@ -1,3 +1,15 @@
+.titre{
+    background-color: #ebebe0;
+    padding: 35px;
+    text-align: center;
+    color: black;
+}
+
+#menu{
+    list-style-type: none;
+
+}
+
 body {
     
 }

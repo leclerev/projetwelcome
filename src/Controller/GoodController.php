@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Good;
 use App\Form\GoodCreationFormType;
+use App\Repository\GoodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,14 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class GoodController extends AbstractController
 {
     /**
-     * @Route("/good", name="good")
+     * @Route("/", name="index")
      */
-    public function index()
+    public function index(GoodRepository $goodRepository)
     {
 
-        $repository = $this->getDoctrine()->getRepository(Good::class);
-        //$good = $repository->find(1);
-        $goods = $repository->findAll();
+        $goods = $goodRepository->findAll();
 
         return $this->render('good/index.html.twig', [
             'controller_name' => 'GoodController',

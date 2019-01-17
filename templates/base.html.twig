@@ -2,17 +2,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block title %}<title>Welcome!</title>{% endblock %}
         {% block stylesheet %}  <link href="{{ asset('style/style.css') }}" rel="stylesheet" /> {% endblock %}
 
     </head>
     <body>
-    <div>
-        {% block leftpanel %}{% endblock %}
+
+    {% block menu %}
+        <ul id="menu">
+            <li>Devenir hôte</li>
+            <li>Aide</li>
+            <li>Inscription</li>
+            <li>Connexion</li>
+        </ul>
+    {% endblock %}
+
     </div>
     <div>
         {% block body %}{% endblock %}
-
     </div>
 
     {% block javascripts %}{% endblock %}
