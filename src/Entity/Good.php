@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\TypePropertyEnum;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,13 +76,17 @@ class Good
         return $this;
     }
 
-    public function getTypePropertie(): ?int
+    public function getTypePropertie(): ?TypePropertyEnum
     {
         return $this->typePropertie;
     }
 
-    public function setTypePropertie(?int $typePropertie): self
+    public function setTypePropertie(?TypePropertyEnum $typePropertie): self
     {
+        if (!in_array($typePropertie, TypePropertyEnum::getAvailableTypes())) {
+            throw new \InvalidArgumentException("Invalid type");
+        }
+
         $this->typePropertie = $typePropertie;
 
         return $this;
@@ -161,6 +166,6 @@ class Good
 
     public function toString(): string
     {
-        return "ID: " . $this->getId() . " Description: " . $this->getDescription() . " Address: " . $this->getAddress()->toString();
+        return "ID: " . $this->getId() . " Description: " . $this->getDescription() . " Address: " . $this->getAddress()->__toString();
     }
 }
