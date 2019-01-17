@@ -106,8 +106,9 @@ class Address
         return $this;
     }
 
-    public function toString(): string
+    public function __toString(): string
     {
+        // TODO: Implement __toString() method.
         return "Street 1: " . $this->getStreet1() . ($this->getStreet2() ? " Street 2: " . $this->getStreet2() : "") . " ZIP Code: " . $this->getZipCode();
     }
 }
