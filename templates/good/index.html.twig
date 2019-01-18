@@ -34,7 +34,7 @@
                     {{ (key%3)?'':'</tr><tr>' }}
                     <td>
                         {#<img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150">#}
-                        <img src="{{ asset('documents/image'~urlImg[key%4]~'.png') }}" alt="Smiley face" height="150" width="150">
+                        {#<img src="{{ asset('documents/image'~urlImg[key%4]~'.png') }}" alt="Smiley face" height="150" width="150">#}
                         <div>
                             {{ typeGood[good.getTypePropertie()] }}
 
