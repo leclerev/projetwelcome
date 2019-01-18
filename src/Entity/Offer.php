@@ -28,13 +28,13 @@ class Offer
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Good", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Good", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $good;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Comment", mappedBy="offer", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Comment", mappedBy="offer")
      */
     private $comment;
 
