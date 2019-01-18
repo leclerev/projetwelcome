@@ -1,3 +1,20 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+comments:
+  path: /comment
+  controller: App\Controller\CommentController::index
+
+create_comment:
+  path: /comment/create
+  controller: App\Controller\CommentController::create
+
+update_comment:
+  path: /comment/update/{id}
+  controller: App\Controller\CommentController::update
+
+delete_comment:
+  path: /comment/delete/{id}
+  controller: App\Controller\CommentController::delete
+  methods: DELETE

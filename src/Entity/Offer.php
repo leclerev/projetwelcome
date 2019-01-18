@@ -22,17 +22,16 @@ class Offer
     private $price;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\good", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Good", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $good;
-
 
     public function getId(): ?int
     {

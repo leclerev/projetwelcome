@@ -22,10 +22,16 @@ class Comment
     private $textComment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Offer", fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $offer;
 
     public function getId(): ?int
     {
@@ -55,4 +61,17 @@ class Comment
 
         return $this;
     }
+
+    public function getOffer(): ?offer
+    {
+        return $this->offer;
+    }
+
+    public function setOffer(?offer $offer): self
+    {
+        $this->offer = $offer;
+
+        return $this;
+    }
+
 }

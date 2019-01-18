@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h1>All comments</h1>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="container text-center mb-5 mt-5">
+            <a href="{{ path('create_comment') }}">Create comment</a>
+        </div>
+        <div class="row col-12">
+            {% for comment in comments %}
+                <div class="card mr-5 ml-5" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ comment.offer.good.description}}</h5>
+                        <p class="card-text text-justify">{{ comment.textComment }}</p>
+                        <hr>
+                        <small class="card-text">By {{ comment.user.username}}</small>
+                        <hr>
+                        {% if (comment.user.id == connected or comment.offer.user.id == connected) %}
+                            <form method="POST" action="{{ path('delete_comment', {id: comment.id}) }}" style="display: inline-block;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-warning">Supprimer</button>
+                            </form>
+                        {% endif %}
+                        {% if comment.user.id == connected %}
+                        <a class="btn btn-primary" href="">Update</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
