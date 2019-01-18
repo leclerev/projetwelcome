@@ -14,3 +14,7 @@ Created by LECLERE Valentin and MEITES Muriel
 ## Google Docs
 Google doc:
 https://docs.google.com/document/d/1yEinpFsckAK9D6oRDSy6qSQBFO6pwPPQqQKYdsbdx98
+
+## API
+### Good:
+In order to get all goods, use the route "/getGood", if you want goods by id, use "/getGood/[your_id_here]"
