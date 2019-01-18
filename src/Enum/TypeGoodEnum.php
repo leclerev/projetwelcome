@@ -6,7 +6,7 @@
  * Time: 13:40
  */
 
-namespace App\Enum;233, 122
+namespace App\Enum;
 
 abstract class TypeGoodEnum
 {

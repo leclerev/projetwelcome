@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Good;
+use App\Enum\TypeGoodEnum;
 use App\Form\GoodCreationFormType;
 use App\Repository\GoodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +25,9 @@ class GoodController extends AbstractController
 
         return $this->render('good/index.html.twig', [
             'controller_name' => 'GoodController',
-            'goods' => $goods
+            'goods' => $goods,
+            'typeGood' => TypeGoodEnum::$typeName,
+            'urlImg' => array(1, 2, 3 ,4),
         ]);
     }
 
