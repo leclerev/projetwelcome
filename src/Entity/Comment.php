@@ -22,13 +22,13 @@ class Comment
     private $textComment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\offer", inversedBy="comment", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Offer", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $offer;

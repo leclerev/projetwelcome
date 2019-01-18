@@ -28,7 +28,7 @@ class Offer
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\good", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Good", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $good;
