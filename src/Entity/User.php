@@ -47,9 +47,14 @@ class User implements UserInterface
     private $birthDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+ * @ORM\Column(type="string", length=255)
+ */
     private $username;
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -162,15 +167,12 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return array_unique($this->roles);
     }
 
     public function setRoles(array $roles): self
     {
-
+        $this->roles = $roles;
         return $this;
     }
 
