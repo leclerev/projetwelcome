@@ -32,7 +32,7 @@ class GoodCreationFormType extends AbstractType
             ->add('hasGarden')
             ->add('hasGarage')
             ->add('hasTerrace')
-            ->add('address');
+            ->add('address', AddressType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
