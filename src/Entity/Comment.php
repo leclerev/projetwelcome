@@ -28,7 +28,7 @@ class Comment
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Offer", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Offer")
      * @ORM\JoinColumn(nullable=false)
      */
     private $offer;
@@ -67,10 +67,11 @@ class Comment
         return $this->offer;
     }
 
-    public function setOffer(offer $offer): self
+    public function setOffer(?offer $offer): self
     {
         $this->offer = $offer;
 
         return $this;
     }
+
 }

@@ -11,7 +11,7 @@
         </div>
         <div class="row col-12">
             {% for comment in comments %}
-                <div class="card" style="width: 18rem;">
+                <div class="card mr-5 ml-5" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ comment.offer.good.description}}</h5>
                         <p class="card-text text-justify">{{ comment.textComment }}</p>
@@ -21,8 +21,6 @@
                         {% if (comment.user.id == connected or comment.offer.user.id == connected) %}
                             <form method="POST" action="{{ path('delete_comment', {id: comment.id}) }}" style="display: inline-block;">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete_comment' ~ comment.id) }}">
-
                                 <button class="btn btn-warning">Supprimer</button>
                             </form>
                         {% endif %}

@@ -22,7 +22,7 @@ class Offer
     private $price;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -32,12 +32,6 @@ class Offer
      * @ORM\JoinColumn(nullable=false)
      */
     private $good;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Comment", mappedBy="offer")
-     */
-    private $comment;
-
 
     public function getId(): ?int
     {
@@ -76,23 +70,6 @@ class Offer
     public function setGood(good $good): self
     {
         $this->good = $good;
-
-        return $this;
-    }
-
-    public function getComment(): ?Comment
-    {
-        return $this->comment;
-    }
-
-    public function setComment(Comment $comment): self
-    {
-        $this->comment = $comment;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $comment->getOffer()) {
-            $comment->setOffer($this);
-        }
 
         return $this;
     }
