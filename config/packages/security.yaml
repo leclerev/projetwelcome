@@ -32,3 +32,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: /logout, roles: ROLE_USER }
+        - { path: /login, allow_if: "not has_role('ROLE_USER')" }
+        - { path: /register, allow_if: "not has_role('ROLE_USER')" }
