@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\Good;
 use App\Repository\GoodRepository;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,8 +45,6 @@ class APIController
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-
-//        return $json;
     }
 
     /**
@@ -59,9 +58,59 @@ class APIController
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoder);
 
+        $response = new Response();
+
         $json = $serializer->serialize($goods, 'json');
 
-        echo $json;
+        $response->setContent($json);
+
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/getUser", name="getUser")
+     */
+    public function getUserByAPI(UtilisateurRepository $utilisateurRepository)
+    {
+        $goods = $utilisateurRepository->findAll();
+
+        $encoder = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoder);
+
+        $response = new Response();
+
+        $json = $serializer->serialize($goods, 'json');
+
+        $response->setContent($json);
+
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/getUser/{id}", name="getUserId")
+     */
+    public function getUserByAPIByID(int $id, UtilisateurRepository $utilisateurRepository)
+    {
+        $goods = $utilisateurRepository->find($id);
+
+        $encoder = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoder);
+
+        $response = new Response();
+
+        $json = $serializer->serialize($goods, 'json');
+
+        $response->setContent($json);
+
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 }
