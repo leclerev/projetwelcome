@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    {#Hello {{ controller_name }}#}
-    <div class="titre">
-        <h1>Welcome</h1>
-        <h2>Comme à la maison, mais ailleurs !</h2>
-    </div>
-{% endblock %}
+ {% block title %}
+     {#Hello {{ controller_name }}#}
+     <div class="titre">
+         <h1>Welcome</h1>
+         <h2>Comme à la maison, mais ailleurs !</h2>
+     </div>
+ {% endblock %}
 
 
 
@@ -33,29 +33,20 @@
                 {% for key, good in goods %}
                     {{ (key%3)?'':'</tr><tr>' }}
                     <td>
+                        <h2>{{ good.getDescription() }}</h2>
                         {#<img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150">#}
-                        <img src="{{ asset('documents/image'~urlImg[key%4]~'.png') }}" alt="Smiley face" height="150" width="150">
+                        <img src="{{ asset(good.photo) }}" height="150" width="150">
                         <div>
+
                             {{ typeGood[good.getTypePropertie()] }}
-
+                            <br>
                             {{ good.getAddress().getCity() }}
-
-                            {{ good.getDescription() }}
+                            <br>
                         </div>
                     </td>
 
                 {% endfor %}
             </tr>
         </table>
-        This friendly message is coming from: To Be Continued...
-        <ul>
-            <li>Your controller at <code><a
-                            href="{{ '/Applications/MAMP/htdocs/Symfony/src/Controller/GoodController.php'|file_link(0) }}">src/Controller/GoodController.php</a></code>
-            </li>
-            <li>Your template at <code><a
-                            href="{{ '/Applications/MAMP/htdocs/Symfony/templates/good/index.html.twig'|file_link(0) }}">templates/good/index.html.twig</a></code>
-            </li>
-        </ul>
-        <a href="/createGood">Create a Good</a>
     </div>
 {% endblock %}

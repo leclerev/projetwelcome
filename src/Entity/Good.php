@@ -58,6 +58,11 @@ class Good
      */
     private $address;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
 
     public function getId(): ?int
     {
@@ -163,5 +168,17 @@ class Good
     public function toString(): string
     {
         return "ID: " . $this->getId() . " Description: " . $this->getDescription() . " Address: " . $this->getAddress()->__toString();
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
     }
 }
