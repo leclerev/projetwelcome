@@ -28,7 +28,7 @@ class Comment
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Offer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Offer", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $offer;
