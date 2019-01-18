@@ -12,9 +12,9 @@
         <div id="menu" style="">
             <a href="#">Devenir hôte</a>
             <a href="#">Aide</a>
-            <a href="/register">Inscription</a>
-            <a href="/login">Connexion</a>
-            <a href="/logout">Déconnexion</a>
+            <a href="{{ path('app_register')}}">Inscription</a>
+            <a href="{{ path('login')}}">Connexion</a>
+            <a href="{{ path('app_logout')}}">Déconnexion</a>
         </div>
     {% endblock %}
 
