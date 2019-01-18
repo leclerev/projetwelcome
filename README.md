@@ -16,8 +16,8 @@ Finally, start the server by command "bit/console s:r"
 
 ### User
 - [x] Create a user
-- [ ] Login
-- [ ] Logout
+- [x] Login
+- [x] Logout
 
 ### Offer
 - [ ] Create offer by user
