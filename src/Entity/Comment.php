@@ -27,6 +27,12 @@ class Comment
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\offer", inversedBy="comment", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $offer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class Comment
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getOffer(): ?offer
+    {
+        return $this->offer;
+    }
+
+    public function setOffer(offer $offer): self
+    {
+        $this->offer = $offer;
 
         return $this;
     }
