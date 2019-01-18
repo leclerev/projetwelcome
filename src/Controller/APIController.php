@@ -11,11 +11,16 @@ namespace App\Controller;
 
 use App\Entity\Good;
 use App\Repository\GoodRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
+/**
+ * @Route("/api", name="api")
+ */
 class APIController
 {
 
@@ -30,11 +35,17 @@ class APIController
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoder);
 
+        $response = new Response();
+
         $json = $serializer->serialize($goods, 'json');
 
-        echo "test";
+        $response->setContent($json);
 
-        return $json;
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+
+//        return $json;
     }
 
     /**
@@ -50,7 +61,7 @@ class APIController
 
         $json = $serializer->serialize($goods, 'json');
 
-        return $json;
+        echo $json;
     }
 
 }
