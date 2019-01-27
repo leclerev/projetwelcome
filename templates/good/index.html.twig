@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
  {% block title %}
-     {#Hello {{ controller_name }}#}
      <div class="titre">
-         <h1>Welcome</h1>
-         <h2>Comme à la maison, mais ailleurs !</h2>
+         <h1>Consulter les offres</h1>
      </div>
  {% endblock %}
 
 
 
 {% block body %}
+
+
     <style>
         .example-wrapper {
             margin: 1em auto;
@@ -34,8 +34,8 @@
                     {{ (key%3)?'':'</tr><tr>' }}
                     <td>
                         <h2>{{ good.getDescription() }}</h2>
-                        {#<img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150">#}
-                        <img src="{{ asset(good.photo) }}" height="150" width="150">
+                        <img src="{{ asset('documents/image1.png') }}" alt="Smiley face" height="150" width="150">
+                        {#<img src="{{ asset(good.photo) }}" height="150" width="150">#}
                         <div>
 
                             {{ typeGood[good.getTypePropertie()] }}

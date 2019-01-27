@@ -2,27 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        {% block title %} <title>Welcome!</title>{% endblock %}
-
-        {% block stylesheet %}  <link href="{{ asset('style/style.css') }}" rel="stylesheet" /> {% endblock %}
-
+        {% block title %}<title>Welcome! </title> {% endblock %}
+        <link rel="stylesheet" href="{{ asset('style/style.css') }}">
+        {% block stylesheet %}  {% endblock %}
     </head>
     <body>
 
 
-
+    <div>
     {% block menu %}
-        <ul id="menu">
+        <ul id="menu" >
             <li><a href="/">Accueil</a></li>
-            <li><a href="/createGood">Créer une offre</a></li>
-            <li>Aide</li>
-            <li><a href="/register">Devenir hôte</a></li>
+            <li><a href="{{ path('goodConsult') }}">Visualiser les offres</a></li>
+            <li><a href="{{ path('goodCreate') }}">Créer une offre</a></li>
+            <li><a href="{{ path('app_register') }}">Devenir hôte</a></li>
         </ul>
     {% endblock %}
-
-    </div>
-    <div>
-        {% block body %}{% endblock %}
     </div>
 
     {% block javascripts %}{% endblock %}

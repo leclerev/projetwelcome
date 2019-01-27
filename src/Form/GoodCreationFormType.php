@@ -9,6 +9,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class GoodCreationFormType extends AbstractType
 {
@@ -27,12 +30,33 @@ class GoodCreationFormType extends AbstractType
                     return TypePropertyEnum::getTypeName($choice);
                 },
             ))
-            ->add('description')
-            ->add('numPeople')
-            ->add('hasGarden')
-            ->add('hasGarage')
-            ->add('hasTerrace')
+            ->add('description',TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('numPeople', IntegerType::class, ['attr' => ['class' => 'form-control']])
+            ->add('hasGarden', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => 'oui',
+                    'Non' => 'non',
+                ],
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('hasGarage',ChoiceType::class, [
+                'choices' => [
+                    'Oui' => 'oui',
+                    'Non' => 'non',
+                ],
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('hasTerrace',ChoiceType::class, [
+                'choices' => [
+                    'Oui' => 'oui',
+                    'Non' => 'non',
+                ],
+                'attr' => ['class' => 'form-control']
+            ])
             ->add('address', AddressType::class);
+         /*   ->add('photo', FileType::class, [
+                'multiple' => true,
+            ]);*/
     }
 
     public function configureOptions(OptionsResolver $resolver)
