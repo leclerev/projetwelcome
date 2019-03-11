@@ -13,7 +13,7 @@ use GraphAware\Neo4j\OGM\Annotations as OGM;
 /**
  * @OGM\Node(label="Visitor")
  */
-class NodeVisitor
+class Visitor
 {
     /**
      * @OGM\GraphId()
