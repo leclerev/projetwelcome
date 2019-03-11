@@ -13,9 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class GoodController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/consultGood", name="goodConsult")
      */
-    public function index(GoodRepository $goodRepository)
+    public function goodConsultation(GoodRepository $goodRepository)
     {
 
         $goods = $goodRepository->findAll();
@@ -49,7 +49,7 @@ class GoodController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
-            return $this->redirectToRoute('good');
+            //return $this->redirectToRoute('good');
         }
 
         return $this->render('good/form.html.twig', [
