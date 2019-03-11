@@ -57,18 +57,16 @@ class UserController extends AbstractController
         return $json;
     }
 
-    /**
-     * @Route("/visitor/{em}")
-     */
-    public function visitor(EntityManagerInterface $em) {
-        //$em = $this->get('neo4j.entity_manager');
-
-        $john = new Visitor('John Doe');
-        $em->persist($john);
-        $em->flush();
-
-        // Retreive data
-        $billy = $em->getRepository(Visitor::class)->findOneBy('name', 'Billy Johnson');
-        echo $billy->getName();
-    }
+    /*
+     * Exemple de fonction :
+     * public function visitor(EntityManagerInterface $em) {
+     *  //$em = $this->get('neo4j.entity_manager');
+     *  $john = new Visitor('John Doe');
+     *  $em->persist($john);
+     *  $em->flush();
+     *  // Retreive data
+     *  $billy = $em->getRepository(Visitor::class)->findOneBy('name', 'Billy Johnson');
+     *  echo $billy->getName();
+     * }
+    */
 }
