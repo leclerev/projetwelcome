@@ -55,5 +55,8 @@ class Visitor
         $this->name = $name;
     }
 
-
+    public function __construct(string $userName)
+    {
+        $this->setName($userName);
+    }
 }

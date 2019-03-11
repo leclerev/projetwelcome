@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Visitor;
+use GraphAware\Neo4j\OGM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -53,5 +55,20 @@ class UserController extends AbstractController
         $json = $serializer->serialize($goods, 'json');
 
         return $json;
+    }
+
+    /**
+     * @Route("/visitor/{em}")
+     */
+    public function visitor(EntityManagerInterface $em) {
+        //$em = $this->get('neo4j.entity_manager');
+
+        $john = new Visitor('John Doe');
+        $em->persist($john);
+        $em->flush();
+
+        // Retreive data
+        $billy = $em->getRepository(Visitor::class)->findOneBy('name', 'Billy Johnson');
+        echo $billy->getName();
     }
 }
