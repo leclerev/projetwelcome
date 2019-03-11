@@ -25,7 +25,9 @@
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
         "symfony/webpack-encore-bundle": "^1.0",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "neo4j/neo4j-bundle": "^0.4.0",
+        "graphaware/neo4j-php-ogm": "@rc"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
