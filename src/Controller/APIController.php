@@ -9,10 +9,8 @@
 namespace App\Controller;
 
 
-use App\Entity\Good;
 use App\Repository\GoodRepository;
 use App\Repository\UtilisateurRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
