@@ -22,9 +22,7 @@ class HomeController extends AbstractController
         if(!$user) {
             $newUser = new Visitor('John Doe');
 
-            $newProp = new Property();
-            $newProp->setName('Apartment');
-            $newProp->setAddress('123 rue du test');
+            $newProp = new Property('Apartment', '123 rue du test');
 
             $newConsult = new Consultation();
             $newConsult->setProperty($newProp);
