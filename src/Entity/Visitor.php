@@ -8,6 +8,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use GraphAware\Neo4j\OGM\Annotations as OGM;
 
 /**
@@ -24,9 +26,11 @@ class Visitor
     protected $name;
 
     /**
-     * @OGM\RelationshipEntity( type="Consultation")
+     * @var Consultation[]
+     *
+     * @OGM\Relationship(relationshipEntity="Consultation", type="CONSULTE", direction="OUTGOING", collection=true, mappedBy="visitor")
      */
-    //private $consultation;
+    private $consultation;
 
     /** Getter / Setter */
     /**
@@ -64,21 +68,30 @@ class Visitor
     public function __construct(string $userName)
     {
         $this->setName($userName);
+        $this->consultation = new ArrayCollection();    // par défaut, on crée un tableau vide de lien
     }
 
     /**
-     * @return mixed
+     * @return Consultation[]
      */
-    public function getConsultation()
+    public function getConsultation(): Collection
     {
         return $this->consultation;
     }
 
     /**
-     * @param mixed $consultation
+     * @param Consultation[] $consultation
      */
-    public function setConsultation($consultation): void
+    public function setConsultation(array $consultation): void
     {
         $this->consultation = $consultation;
+    }
+
+    /**
+     * @param Consultation[] $consultation
+     */
+    public function addConsultation($consultation): void
+    {
+        $this->consultation[] = $consultation;
     }
 }

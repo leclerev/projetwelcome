@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Property;
+
 use App\Entity\Visitor;
 use GraphAware\Neo4j\OGM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +19,7 @@ class HomeController extends AbstractController
         $user = $em->getRepository(Visitor::class)->findOneBy(['name' => $visitor]);
 
         if(!$user) {
-            $newUser = new Visitor('John Doe');
+            $newUser = new Visitor($visitor);
             //$newProp = new Property();
             //$newProp->setName('');
             ///$newProp->setAddress('');

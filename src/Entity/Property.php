@@ -8,6 +8,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use GraphAware\Neo4j\OGM\Annotations as OGM;
 
 /**
@@ -34,6 +35,13 @@ class Property
      * @OGM\Property(type="int")
      */
     protected $mySqlId;
+    /**
+     * @var Consultation[]
+     *
+     * @OGM\Relationship(relationshipEntity="Consultation", type="CONSULTE", direction="INCOMING", collection=true, mappedBy="property")
+     */
+    private $consultation;
+
 
 
 
@@ -49,6 +57,7 @@ class Property
         $this->name = $name;
         $this->address = $address;
         $this->mySqlId = $MySqlId;
+        $this->consultation = new ArrayCollection();
     }
 
     /** Getter / Setter */
@@ -114,5 +123,29 @@ class Property
     public function setMySqlId($MySqlId): void
     {
         $this->mySqlId = $MySqlId;
+    }
+
+    /**
+     * @return Consultation[]
+     */
+    public function getConsultation(): array
+    {
+        return $this->consultation;
+    }
+
+    /**
+     * @param Consultation[] $consultation
+     */
+    public function setConsultation(array $consultation): void
+    {
+        $this->consultation = $consultation;
+    }
+
+    /**
+     * @param Consultation[] $consultation
+     */
+    public function addConsultation($consultation): void
+    {
+        $this->consultation[] = $consultation;
     }
 }

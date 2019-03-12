@@ -12,7 +12,7 @@ use App\Entity\Visitor;
 use GraphAware\Neo4j\OGM\Annotations as OGM;
 
 /**
- * @OGM\RelationshipEntity()
+ * @OGM\RelationshipEntity(type="CONSULTE")
  */
 class Consultation
 {
@@ -32,6 +32,17 @@ class Consultation
 
     /** @OGM\Property(type="int") */
     private $qte;
+
+    /**
+     * Consultation constructor.
+     * @param $visitor
+     * @param $property
+     * @param $qte
+     */
+    public function __construct($qte)
+    {
+        $this->qte = $qte;
+    }
 
 
     /** Getter / Setter */
@@ -97,6 +108,14 @@ class Consultation
     public function setQte($qte): void
     {
         $this->qte = $qte;
+    }
+
+    /**
+     * @param mixed $qte
+     */
+    public function incQte($incVal): void
+    {
+        $this->qte += $incVal;
     }
 
 
