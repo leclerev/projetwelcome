@@ -39,7 +39,7 @@ class GoodController extends AbstractController
             }
 
             if($consult == null)  {
-                $consult = new Consultation(0);
+                $consult = new Consultation(1);
 
 
                 $user->addConsultation($consult);
