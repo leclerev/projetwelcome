@@ -9,9 +9,10 @@ class SessionSubscriber implements EventSubscriberInterface
 {
     public function onKernelRequest(GetResponseEvent $event)
     {
-       $session = $event->getRequest()->getSession();
-       if (!$session->has('visitorId'))
-           $session->set('visitorId' , uniqid());
+        $session = $event->getRequest()->getSession();
+        if(!$session->has('visitorId')) {
+            $session->set('visitorId', uniqid());
+        }
     }
 
     public static function getSubscribedEvents()

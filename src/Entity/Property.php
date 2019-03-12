@@ -60,7 +60,6 @@ class Property
         $this->consultation = new ArrayCollection();
     }
 
-    /** Getter / Setter */
     /**
      * @return mixed
      */
