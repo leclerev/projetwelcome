@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Property;
 use App\Entity\Visitor;
 use GraphAware\Neo4j\OGM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,11 @@ class HomeController extends AbstractController
 
         if(!$user) {
             $newUser = new Visitor('John Doe');
+            $newProp = new Property();
+            $newProp->setName('');
+            $newProp->setAddress('');
             $em->persist($newUser);
+            $em->persist($newProp);
             $em->flush();
         }
 
