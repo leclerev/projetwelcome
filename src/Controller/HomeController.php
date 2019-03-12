@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         $user = $em->getRepository(Visitor::class)->findOneBy(['name' => $visitor]);
 
         if(!$user) {
-            $newUser = new Visitor('John Doe');
+            $newUser = new Visitor($visitor);
 
             $newProp = new Property('Apartment', '123 rue du test');
 
