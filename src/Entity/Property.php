@@ -31,6 +31,18 @@ class Property
     protected $address;
 
     /**
+     * Property constructor.
+     * @param $id
+     * @param $name
+     * @param $address
+     */
+    public function __construct($name, $address)
+    {
+        $this->name = $name;
+        $this->address = $address;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
