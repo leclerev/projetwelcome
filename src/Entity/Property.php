@@ -37,9 +37,11 @@ class Property
      */
     protected $consultations;
 
-    public function __construct()
+    public function __construct($name, $address)
     {
         $this->consultations = new ArrayCollection();
+        $this->name = $name;
+        $this->address = $address;
     }
 
     /**

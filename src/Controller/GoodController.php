@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Property;
 use App\Entity\Good;
 use App\Enum\TypeGoodEnum;
 use App\Form\GoodCreationFormType;
@@ -9,6 +10,7 @@ use App\Repository\GoodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use GraphAware\Neo4j\OGM\EntityManagerInterface;
 
 class GoodController extends AbstractController
 {
@@ -31,7 +33,7 @@ class GoodController extends AbstractController
     /**
      * @Route("/createGood", name="goodCreate")
      */
-    public function goodCreation(Request $request)
+    public function goodCreation(Request $request,EntityManagerInterface $emg)
     {
         $good = new Good();
         $form = $this->createForm(GoodCreationFormType::class, $good);
@@ -51,6 +53,12 @@ class GoodController extends AbstractController
 
             //return $this->redirectToRoute('good');
         }
+
+        // creation d'un noeud ppté
+        $bien = new Property("Appart ds le 10eme", "2 rue de Paradis - 75010 Paris");
+        $emg->persist($bien);
+        $emg->flush();
+
 
         return $this->render('good/form.html.twig', [
             'form' => $form->createView(),
