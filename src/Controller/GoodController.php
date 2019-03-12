@@ -51,13 +51,13 @@ class GoodController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
+            // creation d'un noeud ppté
+            $bien = new Property("Appart ds le 10eme", "2 rue de Paradis - 75010 Paris");
+            $emg->persist($bien);
+            $emg->flush();
+
             //return $this->redirectToRoute('good');
         }
-
-        // creation d'un noeud ppté
-        $bien = new Property("Appart ds le 10eme", "2 rue de Paradis - 75010 Paris");
-        $emg->persist($bien);
-        $emg->flush();
 
 
         return $this->render('good/form.html.twig', [
