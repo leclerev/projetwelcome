@@ -31,17 +31,27 @@ class Property
     protected $address;
 
     /**
+     * @OGM\Property(type="int")
+     */
+    protected $mySqlId;
+
+
+
+    /**
      * Property constructor.
      * @param $id
      * @param $name
      * @param $address
+     * @param $MySqlId
      */
-    public function __construct($name, $address)
+    public function __construct($name, $address, $MySqlId)
     {
         $this->name = $name;
         $this->address = $address;
+        $this->mySqlId = $MySqlId;
     }
 
+    /** Getter / Setter */
     /**
      * @return mixed
      */
@@ -88,5 +98,21 @@ class Property
     public function setAddress($address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMySqlId()
+    {
+        return $this->mySqlId;
+    }
+
+    /**
+     * @param mixed $MySqlId
+     */
+    public function setMySqlId($MySqlId): void
+    {
+        $this->mySqlId = $MySqlId;
     }
 }

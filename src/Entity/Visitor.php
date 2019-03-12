@@ -24,6 +24,12 @@ class Visitor
     protected $name;
 
     /**
+     * @OGM\RelationshipEntity( type="Consultation")
+     */
+    //private $consultation;
+
+    /** Getter / Setter */
+    /**
      * @return mixed
      */
     public function getId()
@@ -58,5 +64,21 @@ class Visitor
     public function __construct(string $userName)
     {
         $this->setName($userName);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConsultation()
+    {
+        return $this->consultation;
+    }
+
+    /**
+     * @param mixed $consultation
+     */
+    public function setConsultation($consultation): void
+    {
+        $this->consultation = $consultation;
     }
 }

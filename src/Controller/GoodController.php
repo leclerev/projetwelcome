@@ -43,21 +43,22 @@ class GoodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $task = $form->getData();
+            $good = $form->getData();
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
+            $entityManager->persist($good);
             $entityManager->flush();
 
-            //return $this->redirectToRoute('good');
+
+           // creation d'un noeud ppté
+            $bien = new Property( $good->getDescription(), $good->getAddress()->__toString(),$good->getId() );
+            $emg->persist($bien);
+            $emg->flush();
         }
 
-        // creation d'un noeud ppté
-        $bien = new Property("Appart ds le 10eme", "2 rue de Paradis - 75010 Paris");
-        $emg->persist($bien);
-        $emg->flush();
+
 
 
         return $this->render('good/form.html.twig', [
