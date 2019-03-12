@@ -8,6 +8,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use GraphAware\Neo4j\OGM\Annotations as OGM;
 
 /**
@@ -22,6 +23,12 @@ class Visitor
 
     /** @OGM\Property(type="string") */
     protected $name;
+
+    /**
+     * @OGM\Relationship(relationshipEntity="App\Entity\Consultation", type="CONSULTE", direction="OUTGOING", collection=true)
+     * @var Consultation[]|ArrayCollection
+     */
+    protected $consultations;
 
     /**
      * @return mixed
@@ -58,5 +65,30 @@ class Visitor
     public function __construct(string $userName)
     {
         $this->setName($userName);
+        $this->consultations = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConsultations()
+    {
+        return $this->consultations;
+    }
+
+    /**
+     * @param mixed $consultations
+     */
+    public function setConsultations($consultations): void
+    {
+        $this->consultations = $consultations;
+    }
+
+    /**
+     * @param mixed $consultations
+     */
+    public function addConsultation($consultation): void
+    {
+        $this->consultations->add($consultation);
     }
 }

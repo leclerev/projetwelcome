@@ -5,7 +5,7 @@ namespace App\EventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
-class SessSubscriber implements EventSubscriberInterface
+class SessionSubscriber implements EventSubscriberInterface
 {
     public function onKernelRequest(GetResponseEvent $event)
     {

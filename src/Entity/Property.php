@@ -8,6 +8,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use GraphAware\Neo4j\OGM\Annotations as OGM;
 
 /**
@@ -29,6 +30,17 @@ class Property
      * @OGM\Property(type="string")
      */
     protected $address;
+
+    /**
+     * @OGM\Relationship(relationshipEntity="App\Entity\Consultation", type="CONSULTE", direction="INCOMING", collection=true)
+     * @var Consultation[]|ArrayCollection
+     */
+    protected $consultations;
+
+    public function __construct()
+    {
+        $this->consultations = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -76,5 +88,29 @@ class Property
     public function setAddress($address): void
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConsultations()
+    {
+        return $this->consultations;
+    }
+
+    /**
+     * @param mixed $consultations
+     */
+    public function setConsultations($consultations): void
+    {
+        $this->consultations = $consultations;
+    }
+
+    /**
+     * @param mixed $consultations
+     */
+    public function addConsultation($consultation): void
+    {
+        $this->consultations->add($consultation);
     }
 }

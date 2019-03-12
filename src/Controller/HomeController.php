@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Consultation;
 use App\Entity\Property;
 use App\Entity\Visitor;
 use GraphAware\Neo4j\OGM\EntityManagerInterface;
@@ -20,11 +21,21 @@ class HomeController extends AbstractController
 
         if(!$user) {
             $newUser = new Visitor('John Doe');
+
             $newProp = new Property();
-            $newProp->setName('');
-            $newProp->setAddress('');
+            $newProp->setName('Apartment');
+            $newProp->setAddress('123 rue du test');
+
+            $newConsult = new Consultation();
+            $newConsult->setProperty($newProp);
+            $newConsult->setVisitor($newUser);
+
+            $newUser->addConsultation($newConsult);
+            $newProp->addConsultation($newConsult);
+
             $em->persist($newUser);
             $em->persist($newProp);
+            $em->persist($newConsult);
             $em->flush();
         }
 
